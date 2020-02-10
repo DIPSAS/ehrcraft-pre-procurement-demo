@@ -5,6 +5,10 @@ The repo contains clinical models and resources used in the pre-procurement demo
 
 The content is provided _as-is_ and is NOT intended for clinical use-case. The purpose of the resources is to demonstrate different aspects of DIPS EHR Craft platform. 
 
+== Presentation 
+The demonstration was recorded and will be published by Region Östergötland. +
+ The powerpoint as PDF is https://github.com/DIPSAS/ehrcraft-pre-procurement-demo/blob/master/resources/2020.02.10-DIPS_PreProcurement_Demo.pdf[here]
+
 == Content
 .Folder content
 [options="header"]
