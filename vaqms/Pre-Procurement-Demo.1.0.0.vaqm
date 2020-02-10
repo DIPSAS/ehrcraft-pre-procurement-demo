@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<VaqmConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Id="2953b572-8779-4272-b714-f6123ae81c85" Oid="vaqm.preprocdemo.bna" Name="Pre-Procurement-Demo" Version="1.0.0" Approved="true" CreatedByAuthor="bna" Created="2020-02-09T23:06:43" Imported="false" VersionComment="Initial commit " BasedOnVersion="0.2.0" 
+  xmlns="http://www.dips.no/vaqmconfig">
+  <AqlBindings>
+    <AqlBinding Id="55552864-87b8-46f9-af2c-d3853d16aa53" Oid="oid" Name="Pulse" DefaultArchetypeId="openEHR-EHR-OBSERVATION.body_weight.v1">
+      <BaseAql>select c,o from COMPOSITION c contains OBSERVATION o[openEHR-EHR-OBSERVATION.pulse.v2]</BaseAql>
+      <Paths>
+        <Path Id="ctxStart" IdentifierRef="c" Value="/context/start_time" DataType="DV_DATE_TIME" />
+        <Path Id="pulse" IdentifierRef="o" Value="/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value" AdminDescription="" DataType="DV_QUANTITY" />
+      </Paths>
+      <WhereExpressions />
+      <OrderByExpressions>
+        <OrderByExpression Id="OrderBy1" Value="$ctxStart/value" Ascending="false" />
+      </OrderByExpressions>
+      <Predicates>
+        <Predicate Id="pulse" WhereRef="" OrderByRef="$OrderBy1" />
+      </Predicates>
+      <KeyValues />
+    </AqlBinding>
+    <AqlBinding Id="d39fd789-e336-466d-ba8a-e1d456335da2" Oid="bodytemp" Name="Bodytemperature" DefaultArchetypeId="[openEHR-EHR-OBSERVATION.body_temperature.v2]">
+      <BaseAql>select a_a from composition contains observation a_a[openEHR-EHR-OBSERVATION.body_temperature.v2]</BaseAql>
+      <Paths>
+        <Path Id="bodytemperature" IdentifierRef="a_a" Value="/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude" AdminDescription="" DataType="" />
+        <Path Id="meassurmenttime" IdentifierRef="a_a" Value="/data[at0002]/events[at0003]/time/value" AdminDescription="" DataType="" />
+      </Paths>
+      <WhereExpressions />
+      <OrderByExpressions>
+        <OrderByExpression Id="sortbytime" Value="$meassurmenttime" Ascending="false" AdminDescription="" />
+      </OrderByExpressions>
+      <Predicates>
+        <Predicate Id="bodytemperaturchart" WhereRef="" OrderByRef="$sortbytime" AdminDescription="" />
+      </Predicates>
+      <KeyValues />
+    </AqlBinding>
+    <AqlBinding Id="89ee2b89-4e97-47e3-88c2-85d9c0d2ae40" Oid="respiration" Name="Respiration" DefaultArchetypeId="openEHR-EHR-OBSERVATION.respiration.v2">
+      <BaseAql>select c,o from composition c contains observation o[openEHR-EHR-OBSERVATION.respiration.v2]</BaseAql>
+      <Paths>
+        <Path Id="ctxStart" IdentifierRef="c" Value="/context/start_time" AdminDescription="" DataType="DV_DATE_TIME" />
+        <Path Id="resp" IdentifierRef="o" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value" AdminDescription="" DataType="DV_QUANTITY" />
+        <Path Id="timeResp" IdentifierRef="o" Value="/data[at0001]/events[at0002]/time" AdminDescription="" DataType="DV_DATE_TIME" />
+      </Paths>
+      <WhereExpressions />
+      <OrderByExpressions>
+        <OrderByExpression Id="last" Value="$timeResp" Ascending="false" AdminDescription="" />
+      </OrderByExpressions>
+      <Predicates>
+        <Predicate Id="lastResp" WhereRef="" OrderByRef="$last" AdminDescription="" />
+      </Predicates>
+      <KeyValues />
+    </AqlBinding>
+    <AqlBinding Id="321c792a-e214-45cf-8930-54fbe5c2ee6e" Oid="spo2" Name="SpO2" DefaultArchetypeId="openEHR-EHR-OBSERVATION.pulse_oximetry.v1">
+      <BaseAql>select c , o from COMPOSITION c contains OBSERVATION o[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]</BaseAql>
+      <Paths>
+        <Path Id="ctxStart" IdentifierRef="c" Value="/context/start_time" AdminDescription="" DataType="DV_DATE_TIME" />
+        <Path Id="obsTime" IdentifierRef="o" Value="/data[at0001]/events[at0002]/time" AdminDescription="" DataType="DV_DATE_TIME" />
+        <Path Id="spo2" IdentifierRef="o" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value" AdminDescription="" DataType="DV_PROPORTION" />
+      </Paths>
+      <WhereExpressions />
+      <OrderByExpressions>
+        <OrderByExpression Id="lastObservation" Value="$obsTime" Ascending="false" AdminDescription="" />
+      </OrderByExpressions>
+      <Predicates>
+        <Predicate Id="lastSpo2" WhereRef="" OrderByRef="$lastObservation" AdminDescription="" />
+      </Predicates>
+      <KeyValues />
+    </AqlBinding>
+    <AqlBinding Id="3a38dd7b-8ec8-4a94-bb93-bd3137413df8" Oid="newsscore" Name="NEWS" DefaultArchetypeId="openEHR-EHR-OBSERVATION.news_uk_rcp.v1">
+      <BaseAql>select a_a from composition contains observation a_a[openEHR-EHR-OBSERVATION.news_uk_rcp.v1]</BaseAql>
+      <Paths>
+        <Path Id="lastnews" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0028]/value/magnitude" AdminDescription="" DataType="" />
+        <Path Id="scoretime" IdentifierRef="a_a" Value="/data[at0001]/origin/value" AdminDescription="" DataType="" />
+        <Path Id="newsresp" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value/value" AdminDescription="" DataType="" />
+        <Path Id="newsspo2" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0029]/value/value" AdminDescription="" DataType="" />
+        <Path Id="newsO2" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0034]/value/value" AdminDescription="" DataType="" />
+        <Path Id="newstemp" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0007]/value/value" AdminDescription="" DataType="" />
+        <Path Id="newsystolic" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value" AdminDescription="" DataType="" />
+        <Path Id="newspuls" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/value" AdminDescription="" DataType="" />
+        <Path Id="newsGSC" IdentifierRef="a_a" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0008]/value/value" AdminDescription="" DataType="" />
+      </Paths>
+      <WhereExpressions />
+      <OrderByExpressions>
+        <OrderByExpression Id="sortbytime" Value="$scoretime" Ascending="false" AdminDescription="" />
+      </OrderByExpressions>
+      <Predicates>
+        <Predicate Id="sistenews" WhereRef="" OrderByRef="$sortbytime" AdminDescription="" />
+      </Predicates>
+      <KeyValues />
+    </AqlBinding>
+    <AqlBinding Id="158b3178-9c3c-4299-8707-a463ba8b54db" Oid="problem_diagnosis" Name="Problem/Diagnose" DefaultArchetypeId="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+      <BaseAql>select c,e from COMPOSITION c contains EVALUATION e[openEHR-EHR-EVALUATION.problem_diagnosis.v1]</BaseAql>
+      <Paths>
+        <Path Id="ctxStartTime" IdentifierRef="c" Value="/context/start_time" AdminDescription="" DataType="DV_DATE_TIME" />
+        <Path Id="problem" IdentifierRef="e" Value="/data[at0001]/items[at0002]/value" AdminDescription="" DataType="DV_CODED_TEXT" />
+        <Path Id="problem_term" IdentifierRef="e" Value="/data[at0001]/items[at0002]/value/defining_code/terminology_id/value" AdminDescription="" DataType="String" />
+        <Path Id="anatomi" IdentifierRef="e" Value="/data[at0001]/items[at0012]/value" AdminDescription="" DataType="DV_CODED_TEXT" />
+        <Path Id="anatomi_term" IdentifierRef="e" Value="/data[at0001]/items[at0012]/value/defining_code/terminology_id/value" AdminDescription="" DataType="String" />
+      </Paths>
+      <WhereExpressions>
+        <WhereExpression Id="anatomi_is_snoemd" Path="$anatomi_term" Operator="EQ" Value="'SNOMED-CT'" AdminDescription="" />
+      </WhereExpressions>
+      <OrderByExpressions>
+        <OrderByExpression Id="orderLast" Value="$ctxStartTime" Ascending="false" AdminDescription="" />
+      </OrderByExpressions>
+      <Predicates>
+        <Predicate Id="lastProblem" WhereRef="" OrderByRef="$orderLast" AdminDescription="" />
+      </Predicates>
+      <KeyValues />
+    </AqlBinding>
+  </AqlBindings>
+  <DataElements>
+    <DataElement Id="4aace8d4-6559-4cd6-94ad-e429276e7e4b" Oid="pulse" Name="Pulse" AdminName="PulseElement" Description="The pulse" Categories="" DisplayFormat="$pulse.pulse" SortFormat="$pulse.ctxStart/value" IsEditable="false" XFormat="" YFormat="" RangeFormat="">
+      <FormatExpressions />
+      <KeyValues />
+    </DataElement>
+    <DataElement Id="9684cc80-a961-4e6a-bf52-14834ea3c6a8" Oid="resp" Name="Respiration" AdminName="Respiration Last" Description="Last respiration" Categories="" DisplayFormat="$lastResp.resp" SortFormat="$lastResp.timeResp" IsEditable="false" AdminDescription="" XFormat="" YFormat="" RangeFormat="">
+      <FormatExpressions />
+      <KeyValues />
+    </DataElement>
+    <DataElement Id="580d7333-d81a-4db5-8a8b-34c4da9c6c1b" Oid="spo2element" Name="SpO2" AdminName="SpO2-Element-Last" Description="Last SpO2" Categories="" DisplayFormat="$lastSpo2.spo2/numerator" SortFormat="$lastSpo2.obsTime" SortFormatDataType="datetime" IsEditable="false" AdminDescription="" XFormat="" YFormat="" RangeFormat="">
+      <FormatExpressions>
+        <FormatExpression Id="dad69c83-a322-43d7-92f0-788fc7756e07">
+          <WhenExpression Value="$lastSpo2.spo2/numerator &gt; 95" AdminDescription="" />
+          <AlertType>NOTE</AlertType>
+          <AlertTypeForegroundColor>#FFFFFFFF</AlertTypeForegroundColor>
+          <AlertTypeBackgroundColor>#FF047E89</AlertTypeBackgroundColor>
+          <Symbol>Symbol</Symbol>
+          <SymbolType>Geometry</SymbolType>
+          <SymbolForegroundColor>#000000</SymbolForegroundColor>
+          <AdminDescription />
+          <Description />
+        </FormatExpression>
+        <FormatExpression Id="eddfad50-f0af-4f26-9330-85c02ae50bd9">
+          <WhenExpression Value="$lastSpo2.spo2/numerator &lt;= 95" AdminDescription="" />
+          <AlertType>CAUTION</AlertType>
+          <AlertTypeForegroundColor>#FF000000</AlertTypeForegroundColor>
+          <AlertTypeBackgroundColor>#FFCB8200</AlertTypeBackgroundColor>
+          <Symbol>Symbol</Symbol>
+          <SymbolType>Geometry</SymbolType>
+          <SymbolForegroundColor>#000000</SymbolForegroundColor>
+          <AdminDescription />
+          <Description />
+        </FormatExpression>
+      </FormatExpressions>
+      <KeyValues />
+    </DataElement>
+    <DataElement Id="d111ea53-9e3d-48ab-83b0-a6f6ea5dd708" Oid="NewsAnbefalt" Name="NEWS" AdminName="NewsAnbefalt" Description="anbefaler neste news på basis av respons på sist satte news score" Categories="ALD" DisplayFormat="{IFNULL(IF(0=$sistenews.lastnews,FORMATDATETIME(DATEVALUE(DURATION_ADD($sistenews.scoretime,&quot;PT720M&quot;)),&quot;kl. HH:mm&quot;, &quot;nb-no&quot;),IF(and(1&lt;=$sistenews.lastnews,4&gt;=$sistenews.lastnews),FORMATDATETIME(DATEVALUE(DURATION_ADD($sistenews.scoretime,&quot;PT240M&quot;)),&quot;kl. HH:mm&quot;, &quot;nb-no&quot;),IF(or(3=$sistenews.newsresp,3=$sistenews.newsspo2,3=$sistenews.newsO2,3=$sistenews.newstemp,3=$sistenews.newsystolic,3=$sistenews.newspuls,3=$sistenews.newsGSC,and(5&lt;=$sistenews.lastnews,6&gt;=$sistenews.lastnews)),FORMATDATETIME(DATEVALUE(DURATION_ADD($sistenews.scoretime,&quot;PT60M&quot;)),&quot;kl. HH:mm&quot;, &quot;nb-no&quot;),IF(and(7&lt;=$sistenews.lastnews,4&gt;=$sistenews.lastnews),&quot;Vitale parametere burde overvåkes kontinuerlig&quot;,&quot;&quot;)))),&quot;&quot;)}" SortFormat="" IsEditable="true" AdminDescription="" XFormat="" XFormatDataType="datetime" YFormat="" YFormatDataType="double" RangeFormat="">
+      <FormatExpressions>
+        <FormatExpression Id="7a225509-b360-4a03-aece-a9349d6912a7">
+          <WhenExpression Value="IFNULL(IF(0=$sistenews.lastnews,true,false),false)" AdminDescription="" />
+          <AlertType>CUSTOM</AlertType>
+          <AlertTypeForegroundColor>#FF000000</AlertTypeForegroundColor>
+          <AlertTypeBackgroundColor>#00FFFFFF</AlertTypeBackgroundColor>
+          <Symbol>M19,1L17.74,3.75 15,5 17.74,6.26 19,9 20.25,6.26 23,5 20.25,3.75 M9,4L6.5,9.5 1,12 6.5,14.5 9,20 11.5,14.5 17,12 11.5,9.5 M19,15L17.74,17.74 15,19 17.74,20.25 19,23 20.25,20.25 23,19 20.25,17.74</Symbol>
+          <SymbolType>Geometry</SymbolType>
+          <SymbolForegroundColor>#FF008000</SymbolForegroundColor>
+          <AdminDescription />
+          <Description>Pasienten er scoret til NEWS med grønn respons</Description>
+        </FormatExpression>
+        <FormatExpression Id="0c82b605-df96-45f7-8323-340172937168">
+          <WhenExpression Value="IFNULL(IF(and(1&lt;=$sistenews.lastnews,4&gt;=$sistenews.lastnews),true,false),false)" AdminDescription="" />
+          <AlertType>CUSTOM</AlertType>
+          <AlertTypeForegroundColor>#FF000000</AlertTypeForegroundColor>
+          <AlertTypeBackgroundColor>#00FFFFFF</AlertTypeBackgroundColor>
+          <Symbol>M19,1L17.74,3.75 15,5 17.74,6.26 19,9 20.25,6.26 23,5 20.25,3.75 M9,4L6.5,9.5 1,12 6.5,14.5 9,20 11.5,14.5 17,12 11.5,9.5 M19,15L17.74,17.74 15,19 17.74,20.25 19,23 20.25,20.25 23,19 20.25,17.74</Symbol>
+          <SymbolType>Geometry</SymbolType>
+          <SymbolForegroundColor>#FFFFFF00</SymbolForegroundColor>
+          <AdminDescription />
+          <Description>Pasienten er scoret til NEWS med gul respons</Description>
+        </FormatExpression>
+        <FormatExpression Id="d99be7c1-e67d-48e7-8f66-2f38a20adfc4">
+          <WhenExpression Value="IFNULL(IF(or(3=$sistenews.newsresp,3=$sistenews.newsspo2,3=$sistenews.newsO2,3=$sistenews.newstemp,3=$sistenews.newsystolic,3=$sistenews.newspuls,3=$sistenews.newsGSC,and(5&lt;=$sistenews.lastnews,6&gt;=$sistenews.lastnews)),true,false),false)" AdminDescription="" />
+          <AlertType>CUSTOM</AlertType>
+          <AlertTypeForegroundColor>#FF000000</AlertTypeForegroundColor>
+          <AlertTypeBackgroundColor>#00FFFFFF</AlertTypeBackgroundColor>
+          <Symbol>M19,1L17.74,3.75 15,5 17.74,6.26 19,9 20.25,6.26 23,5 20.25,3.75 M9,4L6.5,9.5 1,12 6.5,14.5 9,20 11.5,14.5 17,12 11.5,9.5 M19,15L17.74,17.74 15,19 17.74,20.25 19,23 20.25,20.25 23,19 20.25,17.74</Symbol>
+          <SymbolType>Geometry</SymbolType>
+          <SymbolForegroundColor>#FFD69600</SymbolForegroundColor>
+          <AdminDescription />
+          <Description>Pasienten er scoret til NEWS med orange respons</Description>
+        </FormatExpression>
+        <FormatExpression Id="21285a52-ea3e-41d1-a083-960732f0877a">
+          <WhenExpression Value="IFNULL(IF(and(7&lt;=$sistenews.lastnews,4&gt;=$sistenews.lastnews),true,false),false)" AdminDescription="" />
+          <AlertType>CUSTOM</AlertType>
+          <AlertTypeForegroundColor>#FF000000</AlertTypeForegroundColor>
+          <AlertTypeBackgroundColor>#00FFFFFF</AlertTypeBackgroundColor>
+          <Symbol>M19,1L17.74,3.75 15,5 17.74,6.26 19,9 20.25,6.26 23,5 20.25,3.75 M9,4L6.5,9.5 1,12 6.5,14.5 9,20 11.5,14.5 17,12 11.5,9.5 M19,15L17.74,17.74 15,19 17.74,20.25 19,23 20.25,20.25 23,19 20.25,17.74</Symbol>
+          <SymbolType>Geometry</SymbolType>
+          <SymbolForegroundColor>#FF980707</SymbolForegroundColor>
+          <AdminDescription />
+          <Description>Pasienten er scoret til NEWS med rød respons</Description>
+        </FormatExpression>
+        <FormatExpression Id="cc836383-ce9a-4fbc-8a92-47e5f5206f6e">
+          <WhenExpression Value="if(&quot;true&quot;=ifnull($bodytemperaturchart.bodytemperature,true),true,false)" AdminDescription="" />
+          <AlertType>CUSTOM</AlertType>
+          <AlertTypeForegroundColor>#FF000000</AlertTypeForegroundColor>
+          <AlertTypeBackgroundColor>#00FFFFFF</AlertTypeBackgroundColor>
+          <Symbol>M10,19L13,19 13,22 10,22 10,19 M12,2C17.35,2.22 19.68,7.62 16.5,11.67 15.67,12.67 14.33,13.33 13.67,14.17 13,15 13,16 13,17L10,17C10,15.33 10,13.92 10.67,12.92 11.33,11.92 12.67,11.33 13.5,10.67 15.92,8.43 15.32,5.26 12,5A3,3,0,0,0,9,8L6,8A6,6,0,0,1,12,2z</Symbol>
+          <SymbolType>Geometry</SymbolType>
+          <SymbolForegroundColor>#FF648690</SymbolForegroundColor>
+          <AdminDescription />
+          <Description>NEWS er ikke utført</Description>
+        </FormatExpression>
+      </FormatExpressions>
+      <KeyValues />
+
+    </DataElement>
+    <DataElement Id="c2a8c551-d14a-4e1c-8db0-387739fbbcd8" Oid="problem_element" Name="Problem" AdminName="Problem_Siste" Description="Siste_problem" Categories="" DisplayFormat="$lastProblem.problem/value" SortFormat="$lastProblem.ctxStartTime" SortFormatDataType="datetime" IsEditable="false" AdminDescription="" XFormat="" YFormat="" RangeFormat="">
+      <FormatExpressions />
+      <KeyValues />
+    </DataElement>
+  </DataElements>
+  <KeyValues />
+</VaqmConfiguration>

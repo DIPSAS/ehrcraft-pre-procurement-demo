@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="openEHR/v1/Template">
+    <id>fa61d686-67a4-49d4-84d3-9b84ab665349</id>
+    <name>pre-procurement-demo-dips</name>
+    <description>
+        <original_author>
+            <item>
+                <key>date</key>
+                <value>2020-01-31</value>
+            </item>
+            <item>
+                <key>name</key>
+                <value>Åsa Skagerhult &amp; Erik Sundvall</value>
+            </item>
+            <item>
+                <key>organisation</key>
+                <value>Region Östergötland</value>
+            </item>
+        </original_author>
+        <lifecycle_state>in_development</lifecycle_state>
+        <details>
+            <purpose />
+            <use />
+            <misuse />
+        </details>
+        <other_details>
+            <item>
+                <key>licence</key>
+                <value>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.</value>
+            </item>
+            <item>
+                <key>custodian_organisation</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>original_namespace</key>
+                <value>org.openehr</value>
+            </item>
+            <item>
+                <key>original_publisher</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>custodian_namespace</key>
+                <value>org.openehr</value>
+            </item>
+            <item>
+                <key>MD5-CAM-1.0.1</key>
+                <value>52b21611eac62ba3d7f8e672a2133b67</value>
+            </item>
+            <item>
+                <key>PARENT:MD5-CAM-1.0.1</key>
+                <value>1F6756379A13710F5124EBFBAB00F2FD</value>
+            </item>
+            <item>
+                <key>build_uid</key>
+                <value>9652822f-dd7c-4ede-ba47-2b64f2646530</value>
+            </item>
+        </other_details>
+    </description>
+    <definition xsi:type="COMPOSITION" archetype_id="openEHR-EHR-COMPOSITION.encounter.v1" concept_name="Encounter" name="pre-procurement-demo-dips">
+        <Content xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1" concept_name="Problem/diagnose" path="/content">
+            <Rule path="/data[at0001]/items[at0002]" name="Traumatic injury">
+                <constraint xsi:type="textConstraint">
+                    <termQueryId terminologyID="ICD10" terminologyLang="en-GB" queryName="ICD10" />
+                </constraint>
+            </Rule>
+            <Rule path="/data[at0001]/items[at0012]">
+                <constraint xsi:type="textConstraint">
+                    <includedValues>SNOMED-CT::80768000::Vänster arm</includedValues>
+                    <includedValues>SNOMED-CT::6921000::Höger arm</includedValues>
+                    <includedValues>SNOMED-CT::32153003::Vänster ben</includedValues>
+                    <includedValues>SNOMED-CT::62175007::Höger ben</includedValues>
+                </constraint>
+            </Rule>
+            <Rule path="/data[at0001]/items[at0077]" name="Date/time of injury" />
+            <Rule path="/data[at0001]/items[at0003]" max="0" />
+            <Rule path="/data[at0001]/items[at0005]" max="0" />
+            <Rule path="/data[at0001]/items[at0072]" max="0" />
+            <Rule path="/data[at0001]/items[at0030]" max="0" />
+            <Rule path="/data[at0001]/items[at0073]" max="0" />
+            <Rule path="/data[at0001]/items[at0069]" max="0" />
+            <Rule path="/protocol[at0032]/items[at0070]" max="0" />
+            <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.multimedia.v0" concept_name="Multimediaressurs" path="/data[at0001]/items[at0043]" />
+        </Content>
+        <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Templat-overskrift" max="1" path="/content" name="Vital parameters">
+            <Item xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.pulse_oximetry.v1" concept_name="Pulsoksymetri" path="/items">
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0044]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0045]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0046]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0058]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0036]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/state[at0014]/items[at0016]" max="0" />
+                <Rule path="/protocol[at0007]/items[at0061]" max="0" />
+                <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.inspired_oxygen.v1" concept_name="Innåndet oksygen" path="/data[at0001]/events[at0002]/state[at0014]/items[at0015]">
+                    <Rule path="/items[at0052]" max="0" />
+                    <Rule path="/items[at0053]" max="0" />
+                    <Rule path="/items[at0054]" max="0" />
+                </Items>
+            </Item>
+            <Item xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.respiration.v2" concept_name="Åndedrett" path="/items">
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0005]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0016]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0024]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0009]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0070]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/state[at0022]/items[at0065]" max="0" />
+                <Rule path="/data[at0001]/events[at0002]/state[at0022]/items[at0056]" max="0" />
+                <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.inspired_oxygen.v1" concept_name="Innåndet oksygen" path="/data[at0001]/events[at0002]/state[at0022]/items[at0055]">
+                    <Rule path="/items[at0052]" max="0" />
+                    <Rule path="/items[at0053]" max="0" />
+                    <Rule path="/items[at0054]" max="0" />
+                </Items>
+            </Item>
+            <Item xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.pulse.v2" concept_name="Puls/Hjertefrekvens" path="/items">
+                <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at1005]" max="0" />
+                <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at1030]" max="0" />
+                <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at1022]" max="0" />
+                <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at1023]" max="0" />
+                <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at1059]" max="0" />
+                <Rule path="/data[at0002]/events[at0003]/state[at0012]/items[at1018]" max="0" />
+                <Rule path="/data[at0002]/events[at1036]" max="0" />
+            </Item>
+        </Content>
+        <Content xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.news_uk_rcp.v1" concept_name="NEWS" path="/content">
+            <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0007]" max="0" />
+            <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0004]" max="0" />
+            <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0008]" max="0" />
+            <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0044]" max="0" />
+            <Rule path="/data[at0001]/events[at0002]/state[at0041]/items[at0043]" max="0" />
+        </Content>
+        <Context />
+    </definition>
+
+</template>

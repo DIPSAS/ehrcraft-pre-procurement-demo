@@ -1,0 +1,25 @@
+{
+  "name": "device_mock",
+  "version": "1.0.0",
+  "description": "A mock service to demonstrate how to get data from a device",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "openEHR",
+    "DIPS",
+    "Mock"
+  ],
+  "author": "Bjørn Næss <bna@dips.no>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

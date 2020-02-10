@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="openEHR/v1/Template">
+    <id>fa61d686-67a4-49d4-84d3-9b84ab665215</id>
+    <name>pre-procurement-demo</name>
+    <description>
+        <original_author>
+            <item>
+                <key>date</key>
+                <value>2020-01-31</value>
+            </item>
+            <item>
+                <key>name</key>
+                <value>Åsa Skagerhult &amp; Erik Sundvall</value>
+            </item>
+            <item>
+                <key>organisation</key>
+                <value>Region Östergötland</value>
+            </item>
+        </original_author>
+        <lifecycle_state>in_development</lifecycle_state>
+        <details/>
+        <other_details>
+            <item>
+                <key>licence</key>
+                <value>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.</value>
+            </item>
+            <item>
+                <key>custodian_organisation</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>original_namespace</key>
+                <value>org.openehr</value>
+            </item>
+            <item>
+                <key>original_publisher</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>custodian_namespace</key>
+                <value>org.openehr</value>
+            </item>
+            <item>
+                <key>MD5-CAM-1.0.1</key>
+                <value>52b21611eac62ba3d7f8e672a2133b67</value>
+            </item>
+            <item>
+                <key>PARENT:MD5-CAM-1.0.1</key>
+                <value>1F6756379A13710F5124EBFBAB00F2FD</value>
+            </item>
+            <item>
+                <key>build_uid</key>
+                <value>9652822f-dd7c-4ede-ba47-2b64f2646530</value>
+            </item>
+        </other_details>
+    </description>
+    <definition archetype_id="openEHR-EHR-COMPOSITION.encounter.v1"
+        concept_name="Encounter" name="pre-procurement-demo"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:COMPOSITION">
+        <Content
+            archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1"
+            path="/content" xsi:type="tem:EVALUATION">
+            <Rule name="Traumatic injury" path="/data[at0001]/items[at0002]"/>
+            <Rule name="Date/time of injury" path="/data[at0001]/items[at0077]"/>
+            <Rule max="0" path="/data[at0001]/items[at0003]"/>
+            <Rule max="0" path="/data[at0001]/items[at0005]">
+                <constraint xsi:type="tem:multipleConstraint">
+                    <includedTypes>Coded_text</includedTypes>
+                    <includedTypes>Text</includedTypes>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0072]"/>
+            <Rule max="0" path="/data[at0001]/items[at0030]"/>
+            <Rule max="0" path="/data[at0001]/items[at0073]">
+                <constraint xsi:type="tem:multipleConstraint">
+                    <includedTypes>Coded_text</includedTypes>
+                    <includedTypes>Text</includedTypes>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0069]"/>
+            <Rule max="0" path="/protocol[at0032]/items[at0070]"/>
+            <Items archetype_id="openEHR-EHR-CLUSTER.multimedia.v0"
+                path="/data[at0001]/items[at0043]" xsi:type="tem:CLUSTER"/>
+        </Content>
+        <Content archetype_id="openEHR-EHR-SECTION.adhoc.v1"
+            concept_name="Ad hoc heading" name="Vital parameters"
+            path="/content" xsi:type="tem:SECTION">
+            <Item
+                archetype_id="openEHR-EHR-OBSERVATION.pulse_oximetry.v1"
+                path="/items" xsi:type="tem:OBSERVATION">
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0044]">
+                    <constraint xsi:type="tem:quantityConstraint">
+                        <unitMagnitude>
+                            <unit>ml/dl</unit>
+                            <minMagnitude>0.0</minMagnitude>
+                            <includesMaximum>false</includesMaximum>
+                            <includesMinimum>true</includesMinimum>
+                        </unitMagnitude>
+                    </constraint>
+                </Rule>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0045]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0046]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0058]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0036]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/state[at0014]/items[at0016]"/>
+                <Rule max="0" path="/protocol[at0007]/items[at0061]"/>
+                <Items
+                    archetype_id="openEHR-EHR-CLUSTER.inspired_oxygen.v1"
+                    path="/data[at0001]/events[at0002]/state[at0014]/items[at0015]" xsi:type="tem:CLUSTER">
+                    <Rule max="0" path="/items[at0052]"/>
+                    <Rule max="0" path="/items[at0053]"/>
+                    <Rule max="0" path="/items[at0054]"/>
+                </Items>
+            </Item>
+            <Item archetype_id="openEHR-EHR-OBSERVATION.respiration.v2"
+                path="/items" xsi:type="tem:OBSERVATION">
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0005]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0016]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0024]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0009]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0070]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/state[at0022]/items[at0065]"/>
+                <Rule max="0" path="/data[at0001]/events[at0002]/state[at0022]/items[at0056]"/>
+                <Items
+                    archetype_id="openEHR-EHR-CLUSTER.inspired_oxygen.v1"
+                    path="/data[at0001]/events[at0002]/state[at0022]/items[at0055]" xsi:type="tem:CLUSTER">
+                    <Rule max="0" path="/items[at0052]"/>
+                    <Rule max="0" path="/items[at0053]"/>
+                    <Rule max="0" path="/items[at0054]"/>
+                </Items>
+            </Item>
+            <Item archetype_id="openEHR-EHR-OBSERVATION.pulse.v2"
+                path="/items" xsi:type="tem:OBSERVATION">
+                <Rule max="0" path="/data[at0002]/events[at0003]/data[at0001]/items[at1005]"/>
+                <Rule max="0" path="/data[at0002]/events[at0003]/data[at0001]/items[at1030]"/>
+                <Rule max="0" path="/data[at0002]/events[at0003]/data[at0001]/items[at1022]"/>
+                <Rule max="0" path="/data[at0002]/events[at0003]/data[at0001]/items[at1023]"/>
+                <Rule max="0" path="/data[at0002]/events[at0003]/data[at0001]/items[at1059]"/>
+                <Rule max="0" path="/data[at0002]/events[at0003]/state[at0012]/items[at1018]"/>
+                <Rule max="0" path="/data[at0002]/events[at1036]"/>
+                <Rule clone="true" name="structure" path="/data[at0002]/events[at1036]/data[at0001]"/>
+                <Rule clone="true" name="List" path="/data[at0002]/events[at1036]/state[at0012]"/>
+            </Item>
+        </Content>
+        <Content archetype_id="openEHR-EHR-OBSERVATION.news_uk_rcp.v1"
+            path="/content" xsi:type="tem:OBSERVATION">
+            <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0007]"/>
+            <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0004]"/>
+            <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0008]"/>
+            <Rule max="0" path="/data[at0001]/events[at0002]/data[at0003]/items[at0044]"/>
+            <Rule max="0" path="/data[at0001]/events[at0002]/state[at0041]/items[at0043]"/>
+        </Content>
+    </definition>
+    <integrity_checks
+        archetype_id="openEHR-EHR-COMPOSITION.encounter.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">1F6756379A13710F5124EBFBAB00F2FD</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">714FD09D39A922BCADF58B178C81E8BB</digest>
+    </integrity_checks>
+    <integrity_checks archetype_id="openEHR-EHR-CLUSTER.multimedia.v0"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">910BA9A12DFFBC0C6CCD8F65C7EF8092</digest>
+    </integrity_checks>
+    <integrity_checks archetype_id="openEHR-EHR-SECTION.adhoc.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">ADAD488D3CC144486612C75F4E995F94</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-OBSERVATION.pulse_oximetry.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">BD14A0A1E3800CCBA3D7F0169154E9AC</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-CLUSTER.inspired_oxygen.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">FC69F4776269F4C9A11CDB3E9B1A7EA6</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-OBSERVATION.respiration.v2"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">442F928CFC23B05E74AD72E34744BB92</digest>
+    </integrity_checks>
+    <integrity_checks archetype_id="openEHR-EHR-OBSERVATION.pulse.v2"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">09C0FC009F09B43DAFFFA5A6D25CD970</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-OBSERVATION.news_uk_rcp.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">7784810485959076B7145E2FFF93304A</digest>
+    </integrity_checks>
+</template>

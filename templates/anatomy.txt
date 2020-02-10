@@ -1,0 +1,4 @@
+SNOMED-CT::80768000::Vänster arm
+SNOMED-CT::6921000::Höger arm
+SNOMED-CT::32153003::Vänster ben
+SNOMED-CT::62175007::Höger ben

@@ -1,0 +1,9 @@
+termmaps
+forms/*.zip
+!forms/*[0-9].0.zip
+
+reports/
+pakker/
+pm.template
+
+PROTEHCT_1.0.zip

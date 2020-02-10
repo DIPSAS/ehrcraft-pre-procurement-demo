@@ -1,0 +1,425 @@
+{
+  "FormName": "pre-procurement-demo-dips",
+  "FormVersion": "1.0.94",
+  "Title": "Patient 02",
+  "Description": "",
+  "TemplateVariables": [
+    {
+      "Name": "Sys.Now",
+      "Value": "2020-02-08T18:09:51.0000000"
+    }
+  ],
+  "Aliases": [
+    {
+      "FormId": "pre-procurement-demo-dips/problem_diagnos/traumatic_injury@Traumatic injury",
+      "Name": "Traumatisk skada"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/problem_diagnos/date_time_of_injury@Date/time of injury",
+      "Name": "Datum / tid för skada"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/problem_diagnos/klinisk_beskrivning",
+      "Name": "Klinisk beskrivning"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/pulsoximetri/ospecificerad_händelse/spo₂",
+      "Name": "SpO₂"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/andning/ospecificerad_händelse/frekvens",
+      "Name": "Frekvens"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/ospecificerad_händelse/frekvens",
+      "Name": "Frekvens"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/ospecificerad_händelse/regelbunden",
+      "Name": "Regelbunden"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/ospecificerad_händelse/kroppsställning",
+      "Name": "Kroppsställning"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/metod",
+      "Name": "Metod"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/lokalisation/value",
+      "Name": "Lokalisation"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/pulsoximetri/ospecificerad_händelse/tillfört_syre/enbart_luft",
+      "Name": "Enbart luft"
+    },
+    {
+      "FormId": "pre-procurement-demo-dips/problem_diagnos/anatomisk_plats",
+      "Name": "Anatomisk plats"
+    }
+  ],
+  "Tests": [
+    {
+      "Title": "Test #1",
+      "TemplateVariables": [],
+      "Items": [
+        {
+          "Input": {
+            "Title": "Input #1",
+            "Events": [
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/problem_diagnos/traumatic_injury@Traumatic injury",
+                  "Path": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0002 and name/value='Traumatic injury']/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_CODED_TEXT",
+                  "Value": {
+                    "_type": "DV_CODED_TEXT",
+                    "value": "Kontusjon av hofte",
+                    "defining_code": {
+                      "terminology_id": {
+                        "value": "ICD10"
+                      },
+                      "code_string": "S700"
+                    }
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/problem_diagnos/date_time_of_injury@Date/time of injury",
+                  "Path": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0077 and name/value='Date/time of injury']/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_DATE_TIME",
+                  "Value": {
+                    "_type": "DV_DATE_TIME",
+                    "value": "2020-01-23T12:34:00+01:00"
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/problem_diagnos/klinisk_beskrivning",
+                  "Path": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0009]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_TEXT",
+                  "Value": {
+                    "_type": "DV_TEXT",
+                    "value": "The patient fell down the stairs at home  and landed on his right hip."
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/pulsoximetri/ospecificerad_händelse/spo₂",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_PROPORTION",
+                  "Value": {
+                    "_type": "DV_PROPORTION",
+                    "numerator": 96.0,
+                    "denominator": 100.0,
+                    "type": 0,
+                    "precision": 0
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/andning/ospecificerad_händelse/frekvens",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.respiration.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_QUANTITY",
+                  "Value": {
+                    "_type": "DV_QUANTITY",
+                    "magnitude": 21.0,
+                    "units": "/min"
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/ospecificerad_händelse/frekvens",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_QUANTITY",
+                  "Value": {
+                    "_type": "DV_QUANTITY",
+                    "magnitude": 92.0,
+                    "units": "/min"
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/ospecificerad_händelse/regelbunden",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0005]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_CODED_TEXT",
+                  "Value": {
+                    "_type": "DV_CODED_TEXT",
+                    "value": "Regelbunden",
+                    "defining_code": {
+                      "code_string": "at0006"
+                    }
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/ospecificerad_händelse/kroppsställning",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.pulse.v2]/data[at0002]/events[at0003]/state[at0012]/items[at0013]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_CODED_TEXT",
+                  "Value": {
+                    "_type": "DV_CODED_TEXT",
+                    "value": "Liggande",
+                    "defining_code": {
+                      "code_string": "at1000"
+                    }
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/metod",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.pulse.v2]/protocol[at0010]/items[at1019]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_CODED_TEXT",
+                  "Value": {
+                    "_type": "DV_CODED_TEXT",
+                    "value": "Automatisk, icke-invasiv",
+                    "defining_code": {
+                      "code_string": "at1034"
+                    }
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/puls_hjärtfrekvens/lokalisation/value",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.pulse.v2]/protocol[at0010]/items[at1037]/value[type='DV_CODED_TEXT']"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_CODED_TEXT",
+                  "Value": {
+                    "_type": "DV_CODED_TEXT",
+                    "value": "Finger",
+                    "defining_code": {
+                      "code_string": "at1047"
+                    }
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/vital_parameters@Vital parameters/pulsoximetri/ospecificerad_händelse/tillfört_syre/enbart_luft",
+                  "Path": "/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Vital parameters']/items[openEHR-EHR-OBSERVATION.pulse_oximetry.v1]/data[at0001]/events[at0002]/state[at0014]/items[openEHR-EHR-CLUSTER.inspired_oxygen.v1]/items[at0057]/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_BOOLEAN",
+                  "Value": {
+                    "_type": "DV_BOOLEAN",
+                    "value": true
+                  }
+                }
+              },
+              {
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/problem_diagnos/anatomisk_plats",
+                  "Path": "/content[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0012 and name/value='Anatomisk plats#1']/value"
+                },
+                "Command": "SetValue",
+                "Value": {
+                  "Type": "DV_CODED_TEXT",
+                  "Value": {
+                    "_type": "DV_CODED_TEXT",
+                    "value": "Höger ben",
+                    "defining_code": {
+                      "code_string": "62175007"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Verification": {
+            "Title": "Verification #2",
+            "Items": [
+              {
+                "State": {
+                  "ReadOnly": false,
+                  "Hidden": false
+                },
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/news/tidpunkt/syremättnad",
+                  "Path": "/content[openEHR-EHR-OBSERVATION.news_uk_rcp.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0029]/value"
+                },
+                "Operator": "Equal",
+                "Value": {
+                  "Type": "DV_ORDINAL",
+                  "Value": {
+                    "_type": "DV_ORDINAL",
+                    "value": 0,
+                    "symbol": {
+                      "value": ">= 96",
+                      "defining_code": {
+                        "terminology_id": {
+                          "value": "local"
+                        },
+                        "code_string": "at0030"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "State": {
+                  "ReadOnly": false,
+                  "Hidden": false
+                },
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/news/tidpunkt/syrgastillförsel",
+                  "Path": "/content[openEHR-EHR-OBSERVATION.news_uk_rcp.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0034]/value"
+                },
+                "Operator": "Equal",
+                "Value": {
+                  "Type": "DV_ORDINAL",
+                  "Value": {
+                    "_type": "DV_ORDINAL",
+                    "value": 0,
+                    "symbol": {
+                      "value": "Nej",
+                      "defining_code": {
+                        "terminology_id": {
+                          "value": "local"
+                        },
+                        "code_string": "at0036"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "State": {
+                  "ReadOnly": false,
+                  "Hidden": false
+                },
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/news/tidpunkt/andningsfrekvens",
+                  "Path": "/content[openEHR-EHR-OBSERVATION.news_uk_rcp.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value"
+                },
+                "Operator": "Equal",
+                "Value": {
+                  "Type": "DV_ORDINAL",
+                  "Value": {
+                    "_type": "DV_ORDINAL",
+                    "value": 2,
+                    "symbol": {
+                      "value": "21-24",
+                      "defining_code": {
+                        "terminology_id": {
+                          "value": "local"
+                        },
+                        "code_string": "at0020"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "State": {
+                  "ReadOnly": false,
+                  "Hidden": false
+                },
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/news/tidpunkt/hjärtfrekvens",
+                  "Path": "/content[openEHR-EHR-OBSERVATION.news_uk_rcp.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value"
+                },
+                "Operator": "Equal",
+                "Value": {
+                  "Type": "DV_ORDINAL",
+                  "Value": {
+                    "_type": "DV_ORDINAL",
+                    "value": 1,
+                    "symbol": {
+                      "value": "41-50 eller 91-110",
+                      "defining_code": {
+                        "terminology_id": {
+                          "value": "local"
+                        },
+                        "code_string": "at0012"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "State": {
+                  "ReadOnly": true,
+                  "Hidden": false
+                },
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/news/tidpunkt/totalpoäng_(news)",
+                  "Path": "/content[openEHR-EHR-OBSERVATION.news_uk_rcp.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0028]/value"
+                },
+                "Operator": "Equal",
+                "Value": {
+                  "Type": "DV_COUNT",
+                  "Value": {
+                    "_type": "DV_COUNT",
+                    "magnitude": 3
+                  }
+                }
+              },
+              {
+                "State": {
+                  "ReadOnly": false,
+                  "Hidden": false
+                },
+                "Field": {
+                  "FormId": "pre-procurement-demo-dips/news/tidpunkt/klinisk_riskkategori",
+                  "Path": "/content[openEHR-EHR-OBSERVATION.news_uk_rcp.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0047]/value"
+                },
+                "Operator": "Equal",
+                "Value": {
+                  "Type": "DV_CODED_TEXT",
+                  "Value": {
+                    "_type": "DV_CODED_TEXT",
+                    "value": "Låg",
+                    "defining_code": {
+                      "code_string": "at0048"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

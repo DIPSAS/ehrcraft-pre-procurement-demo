@@ -1,0 +1,5 @@
+# The folder where the script should be placed
+form_scripts: "../form_scripts"       
+# "../form_scripts" 
+# The form name - will be written as <form_name>.js into the <form_scripts> folder
+form_name: pre-procurement-demo-dips
