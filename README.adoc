@@ -1,5 +1,31 @@
 = PRE PROCUREMENT DEMO 
 
-== Anatomy 
+== What is it? 
+The repo contains clinical models and resources used in the pre-procurement demo for Region Östergötland on Monday 10.february 2020. 
 
-Picture taken from https://images.app.goo.gl/C98wbQf5SMeQWswu8[]
+The content is provided _as-is_ and is NOT intended for clinical use-case. The purpose of the resources is to demonstrate different aspects of DIPS EHR Craft platform. 
+
+== Content
+.Folder content
+[options="header"]
+|====
+|Folder | Content 
+|archetypes| The archetypes used in the applications. 
+|device_mock|A _very_ simple REST service providing random vital signs data, used to demonstrate how Forms may get data using HTTP 
+|form_scrips|The compiled JavaScript for the form. See the _typescript_ folder for the source of the script
+|form_tests |Test script for the scenarios given. Used in EHR Craft Studio to do integration tests 
+|forms | openEHR Forms developed by DIPS Form Designer 
+|opts | The operational templates 
+|resources | Some documentations and the images created for NEWS 
+|templates | The OET files which the OPTs are based on 
+|typescript| The _"source"_ code for the form script. Using gulp to build the compiled script 
+|vaqms | An example of how VAQM may be defined as a stored AQL query 
+|====
+
+.File content 
+[options="header"]
+|====
+|File | Content 
+|fileserver.config | The configuration of this filebased repository. Used by Form Designer and EHR Craft Studio to locate the resources 
+|pm.template | Content definition with dependencies for _package-manager_ 
+|====
