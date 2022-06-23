@@ -53,7 +53,7 @@
     "vinyl-source-stream": "^2.0.0",
     "voca": "^1.4.0",
     "lodash.template": ">=4.5.0",
-    "shell-quote": ">=1.6.1"
+    "shell-quote": ">=1.7.3"
   },
   "dependencies": {
     "ehrcraft-form-api": "^1.2.2",
